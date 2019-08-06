@@ -16,6 +16,7 @@
         <module>Server-Consumer</module>
         <module>common</module>
         <module>Config-Server</module>
+        <module>Config-Client</module>
     </modules>
 
     <parent>

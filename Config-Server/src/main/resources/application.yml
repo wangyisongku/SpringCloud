@@ -1,9 +1,17 @@
 server:
-  port: 8001
+  port: 8011
 
 spring:
   application:
-    name: server-provider
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wangyisongku/SpringCloud/
+          search-paths: config-repo
+          username: wangyisongku
+          password: wys740267827
 
 eureka:
   instance:
@@ -11,8 +19,6 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     # eureka服务器在接受到实力的最后一次发出的心跳后，需要等待多久才可以将此实力删除
     lease-expiration-duration-in-seconds: 10
-    # 默认是false，设为true之后当鼠标放在服务状态上之后显示服务的ip
-    prefer-ip-address: true
   client:
     # 表示是否将自己注册到Eureka Server，默认为true。
     register-with-eureka: true
@@ -22,4 +28,4 @@ eureka:
     registry-fetch-interval-seconds: 10
     # 注册地址
     serviceUrl:
-      defaultZone: http://localhost:8000/eureka
+      defaultZone: http://localhost:8000/eureka/
