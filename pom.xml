@@ -15,6 +15,7 @@
         <module>Service-Provider2</module>
         <module>Server-Consumer</module>
         <module>common</module>
+        <module>Config-Server</module>
     </modules>
 
     <parent>
