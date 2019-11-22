@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: spring-cloud-config-client
+    name: config-client
 
 #eureka:
 #  client:

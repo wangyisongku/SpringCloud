@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: spring-cloud-config-server
+    name: config-server
   cloud:
     config:
       server:
@@ -12,6 +12,11 @@ spring:
           search-paths: config-repo
           username: wangyisongku
           password: wys740267827
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   instance:
@@ -19,6 +24,9 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     # eureka服务器在接受到实力的最后一次发出的心跳后，需要等待多久才可以将此实力删除
     lease-expiration-duration-in-seconds: 10
+    prefer-ip-address: true
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
   client:
     # 表示是否将自己注册到Eureka Server，默认为true。
     register-with-eureka: true
@@ -28,4 +36,8 @@ eureka:
     registry-fetch-interval-seconds: 10
     # 注册地址
     serviceUrl:
-      defaultZone: http://localhost:8000/eureka/
+      defaultZone: http://wangyisongku:wangyisongku@localhost:8000/eureka/
+
+management:
+  security:
+    enabled: false         # 刷新时，关闭安全验证
