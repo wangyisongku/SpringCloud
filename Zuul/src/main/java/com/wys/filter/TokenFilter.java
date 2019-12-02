@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @Component
-public class MyFilter extends ZuulFilter {
+public class TokenFilter extends ZuulFilter {
 
     /**
      * 返回一个字符串代表过滤器的类型 :
@@ -26,7 +26,7 @@ public class MyFilter extends ZuulFilter {
     }
 
     /**
-     * 过滤的顺序
+     * 过滤的顺序 数字越小表示顺序越高，越先执行
      *
      * @return
      */
@@ -58,7 +58,7 @@ public class MyFilter extends ZuulFilter {
         Object accessToken = request.getParameter("token");
         if (accessToken == null) {
             log.warn("token is empty");
-            ctx.setSendZuulResponse(false);
+            ctx.setSendZuulResponse(false);  // 对请求不进行路由
             ctx.setResponseStatusCode(401);
             try {
                 ctx.getResponse().getWriter().write("token is empty");

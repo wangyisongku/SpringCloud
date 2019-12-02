@@ -25,3 +25,13 @@ eureka:
     # 注册地址
     serviceUrl:
       defaultZone: http://wangyisongku:wangyisongku@localhost:8000/eureka
+
+zuul:
+  TokenFilter:
+    pre:
+      disable: true   # 禁用文件名为：TokenFilter，类型为：pre 的过滤器
+  routes:
+    wys-product:
+      path: /wys/xl/**
+      serviceId: server-provider    # 以  /wys/xl 开头的请求都转发给 server-provider 服务
+  ignored-services: '*'     # 使用‘*’可以忽略所有微服务，多个用逗号分隔
