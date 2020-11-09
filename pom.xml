@@ -17,6 +17,7 @@
         <module>common</module>
         <module>Config-Server</module>
         <module>Config-Client</module>
+        <module>Zuul</module>
         <module>MQ-Provider1</module>
     </modules>
 

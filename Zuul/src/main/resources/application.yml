@@ -1,0 +1,37 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: service-zuul
+
+eureka:
+  instance:
+    # eureka客户端需要多长时间发送心跳给eureka服务器，表明他仍然或者，默认30秒
+    lease-renewal-interval-in-seconds: 5
+    # eureka服务器在接受到实力的最后一次发出的心跳后，需要等待多久才可以将此实力删除
+    lease-expiration-duration-in-seconds: 10
+    # 默认是false，设为true之后当鼠标放在服务状态上之后显示服务的ip
+    prefer-ip-address: true
+  client:
+    healthcheck:
+      enabled: true  #开启健康检查（需要spring-boot-starter-actuator依赖）
+    # 表示是否将自己注册到Eureka Server，默认为true。
+    register-with-eureka: true
+    # 表示是否从Eureka Server获取注册信息，默认为true。
+    fetch-registry: true
+    #表示eureka client间隔多久去拉取服务器注册信息,默认为30秒。
+    registry-fetch-interval-seconds: 10
+    # 注册地址
+    serviceUrl:
+      defaultZone: http://wangyisongku:wangyisongku@localhost:8000/eureka
+
+zuul:
+  TokenFilter:
+    pre:
+      disable: true   # 禁用文件名为：TokenFilter，类型为：pre 的过滤器
+  routes:
+    wys-product:
+      path: /wys/xl/**
+      serviceId: server-provider    # 以  /wys/xl 开头的请求都转发给 server-provider 服务
+  ignored-services: '*'     # 使用‘*’可以忽略所有微服务，多个用逗号分隔
