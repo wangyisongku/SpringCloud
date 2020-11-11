@@ -19,6 +19,7 @@
         <module>Config-Client</module>
         <module>Zuul</module>
         <module>MQ-Provider1</module>
+        <module>MQ-Consumer</module>
     </modules>
 
     <parent>
