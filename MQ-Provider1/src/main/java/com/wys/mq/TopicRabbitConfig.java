@@ -43,7 +43,6 @@ public class TopicRabbitConfig {
     Binding bindingExchangeMessage() {
         return BindingBuilder.bind(firstQueue()).to(exchange()).with(man);
     }
-
     //将secondQueue和topicExchange绑定,而且绑定的键值为用上通配路由键规则topic.#
     // 这样只要是消息携带的路由键是以topic.开头,都会分发到该队列
     @Bean

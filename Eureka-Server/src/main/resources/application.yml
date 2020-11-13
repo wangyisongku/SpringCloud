@@ -18,8 +18,8 @@ eureka:
     register-with-eureka: false
     # 此客户端是否获取eureka服务器注册表上的注册信息,默认为true
     fetch-registry: false
-    serviceUrl:
-      defaultZone: http://wangyisongku:wangyisongku@${eureka.instance.hostname}:${server.port}/eureka
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka
   server:
     # 关闭自我保护
     enable-self-preservation: false

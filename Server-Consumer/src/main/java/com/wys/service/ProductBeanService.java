@@ -2,7 +2,7 @@ package com.wys.service;
 
 import com.wys.bean.ProductBean;
 import com.wys.fallback.ProductBeanFallBack;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 

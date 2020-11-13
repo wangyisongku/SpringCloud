@@ -5,6 +5,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @ProjectName: SpringCloud
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Bean;
  * @Date: 2020/11/13 20:17
  * @Version: 1.0
  */
+@Configuration
 public class RabbitConfig {
 
     @Bean
