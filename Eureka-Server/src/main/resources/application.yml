@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: eureka-server
+  security:
+    user:
+      name: wangyisongku
+      password: wangyisongku
 
 eureka:
   instance:
@@ -22,7 +26,3 @@ eureka:
     # 清理无效节点（单位毫秒，默认是60*1000，即60秒）
     eviction-interval-timer-in-ms: 4000
 
-security:
-  user:
-    name: wangyisongku
-    password: wangyisongku
