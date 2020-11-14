@@ -40,7 +40,7 @@ public class SendMessageController {
         map.put("createTime",createTime);
 
         //将消息携带绑定键值：TestDirectRouting 发送到交换机TestDirectExchange
-        rabbitTemplate.convertAndSend("TestDirectExchange", "TestDirectRouting", map);
+        rabbitTemplate.convertAndSend("TestDirectExchange11", "TestDirectRouting", map);
         return "ok";
     }
 
@@ -90,6 +90,19 @@ public class SendMessageController {
         map.put("messageData", messageData);
         map.put("createTime", createTime);
         rabbitTemplate.convertAndSend("fanoutExchange", null, map);
+        return "ok";
+    }
+
+    @GetMapping("/testLonely")
+    public String TestMessageAck2() {
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "message: lonelyDirectExchange test message ";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String, Object> map = new HashMap<>();
+        map.put("messageId", messageId);
+        map.put("messageData", messageData);
+        map.put("createTime", createTime);
+        rabbitTemplate.convertAndSend("lonelyDirectExchange", "TestDirectRouting", map);
         return "ok";
     }
 }

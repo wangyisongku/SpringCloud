@@ -10,6 +10,11 @@ spring:
     username: guest
     password: guest
 
+    #确认消息已发送到交换机(Exchange)
+    publisher-confirms: true
+    #确认消息已发送到队列(Queue)
+    publisher-returns: true
+
 eureka:
   instance:
     lease-expiration-duration-in-seconds: 10  #服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除
