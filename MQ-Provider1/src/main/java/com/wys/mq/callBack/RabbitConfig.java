@@ -1,4 +1,4 @@
-package com.wys.mq;
+package com.wys.mq.callBack;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

@@ -1,9 +1,9 @@
 server:
-  port: 8010
+  port: 8020
 
 spring:
   application:
-    name: MQ-Provider1
+    name: MQ-Provider
   rabbitmq:
     host: 127.0.0.1
     port: 5672

@@ -22,10 +22,15 @@ spring:
 server:
   port: 8012
 
+#management:
+#  security:
+#    enabled: false              # 刷新时，关闭安全验证
+#  context-path: /actuator
 management:
-  security:
-    enabled: false              # 刷新时，关闭安全验证
-  context-path: /actuator
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 eureka:
   instance:

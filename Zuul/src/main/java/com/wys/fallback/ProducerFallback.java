@@ -1,6 +1,7 @@
 package com.wys.fallback;
 
-import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
+import com.netflix.hystrix.exception.HystrixTimeoutException;
+import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Component
-public class ProducerFallback implements ZuulFallbackProvider {
+public class ProducerFallback implements FallbackProvider {
 
     /**
      * 指定要处理的 service
@@ -25,21 +26,29 @@ public class ProducerFallback implements ZuulFallbackProvider {
     }
 
     @Override
-    public ClientHttpResponse fallbackResponse() {
+    public ClientHttpResponse fallbackResponse(String route, final Throwable cause) {
+        if (cause instanceof HystrixTimeoutException) {
+            return response(HttpStatus.GATEWAY_TIMEOUT);
+        } else {
+            return response(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private ClientHttpResponse response(final HttpStatus status) {
         return new ClientHttpResponse() {
             @Override
             public HttpStatus getStatusCode() throws IOException {
-                return HttpStatus.OK;
+                return status;
             }
 
             @Override
             public int getRawStatusCode() throws IOException {
-                return 200;
+                return status.value();
             }
 
             @Override
             public String getStatusText() throws IOException {
-                return "OK";
+                return status.getReasonPhrase();
             }
 
             @Override

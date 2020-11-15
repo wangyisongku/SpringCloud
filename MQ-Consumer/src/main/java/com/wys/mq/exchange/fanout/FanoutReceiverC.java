@@ -1,4 +1,4 @@
-package com.wys.exchange.direct;
+package com.wys.mq.exchange.fanout;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -8,20 +8,21 @@ import java.util.Map;
 
 /**
  * @ProjectName: SpringCloud
- * @Package: com.wys.mq
- * @ClassName: DirectReceiver
+ * @Package: com.wys.exchange.fanout
+ * @ClassName: FanoutReceiverC
  * @Author: wangy
  * @Description: ${description}
- * @Date: 2020/11/11 20:24
+ * @Date: 2020/11/11 21:41
  * @Version: 1.0
  */
+
 @Component
-@RabbitListener(queues = "TestDirectQueue")//监听的队列名称 TestDirectQueue
-public class DirectReceiver {
+@RabbitListener(queues = "fanout.C")
+public class FanoutReceiverC {
 
     @RabbitHandler
     public void process(Map testMessage) {
-        System.out.println("第一个 -- DirectReceiver消费者收到消息  : " + testMessage.toString());
+        System.out.println("FanoutReceiverC消费者收到消息  : " +testMessage.toString());
     }
 
 }

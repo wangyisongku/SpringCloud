@@ -1,4 +1,4 @@
-package com.wys.mq;
+package com.wys.mq.exchange;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @ClassName: FanoutRabbitConfig
  * @Author: wangy
  * @Description: ${description}
- * @Date: 2020/11/11 21:42
+ * @Date: 2020/11/11 21:38
  * @Version: 1.0
  */
 @Configuration

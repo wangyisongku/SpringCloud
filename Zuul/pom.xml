@@ -12,13 +12,16 @@
     <artifactId>Zuul</artifactId>
 
     <dependencies>
+        <!--网关路由-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+        <!--流量限流-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zuul</artifactId>
+            <groupId>com.marcosbarbero.cloud</groupId>
+            <artifactId>spring-cloud-zuul-ratelimit</artifactId>
+            <version>1.5.0.RELEASE</version>
         </dependency>
     </dependencies>
 

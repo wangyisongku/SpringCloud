@@ -1,4 +1,4 @@
-package com.wys.exchange.topic;
+package com.wys.mq.exchange.fanout;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -8,19 +8,20 @@ import java.util.Map;
 
 /**
  * @ProjectName: SpringCloud
- * @Package: com.wys.exchange.topic
- * @ClassName: TopicTotalReceiver
+ * @Package: com.wys.exchange.fanout
+ * @ClassName: FanoutReceiverA
  * @Author: wangy
  * @Description: ${description}
- * @Date: 2020/11/11 21:20
+ * @Date: 2020/11/11 21:40
  * @Version: 1.0
  */
 @Component
-@RabbitListener(queues = "topic.woman")
-public class TopicTotalReceiver {
+@RabbitListener(queues = "fanout.A")
+public class FanoutReceiverA {
 
     @RabbitHandler
     public void process(Map testMessage) {
-        System.out.println("TopicTotalReceiver消费者收到消息  : " + testMessage.toString());
+        System.out.println("FanoutReceiverA消费者收到消息  : " +testMessage.toString());
     }
+
 }
