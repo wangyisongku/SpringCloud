@@ -1,4 +1,4 @@
-package com.wys.mq;
+package com.wys.mq.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

@@ -12,11 +12,6 @@
     <artifactId>Eureka-Server</artifactId>
 
     <dependencies>
-        <!--监测信息-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
         <!--安全机制-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

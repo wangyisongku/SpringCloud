@@ -1,4 +1,4 @@
-package com.wys.exchange.direct;
+package com.wys.mq.exchange.direct;
 
 import com.wys.bean.ProductBean;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

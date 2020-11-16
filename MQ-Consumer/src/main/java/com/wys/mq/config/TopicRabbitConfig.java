@@ -1,4 +1,4 @@
-package com.wys.mq;
+package com.wys.mq.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @ClassName: TopicRabbitConfig
  * @Author: wangy
  * @Description: ${description}
- * @Date: 2020/11/11 21:07
+ * @Date: 2020/11/11 21:24
  * @Version: 1.0
  */
 @Configuration
@@ -26,6 +26,7 @@ public class TopicRabbitConfig {
     public Queue firstQueue() {
         return new Queue(TopicRabbitConfig.man);
     }
+
     @Bean
     public Queue secondQueue() {
         return new Queue(TopicRabbitConfig.woman);
@@ -43,10 +44,12 @@ public class TopicRabbitConfig {
     Binding bindingExchangeMessage() {
         return BindingBuilder.bind(firstQueue()).to(exchange()).with(man);
     }
+
     //将secondQueue和topicExchange绑定,而且绑定的键值为用上通配路由键规则topic.#
     // 这样只要是消息携带的路由键是以topic.开头,都会分发到该队列
     @Bean
     Binding bindingExchangeMessage2() {
         return BindingBuilder.bind(secondQueue()).to(exchange()).with("topic.#");
     }
+
 }
