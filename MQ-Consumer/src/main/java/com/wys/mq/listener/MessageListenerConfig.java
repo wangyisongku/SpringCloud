@@ -28,11 +28,11 @@ public class MessageListenerConfig {
     @Bean
     public SimpleMessageListenerContainer simpleMessageListenerContainer() {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
-        container.setConcurrentConsumers(1);
-        container.setMaxConcurrentConsumers(1);
+        container.setConcurrentConsumers(2);     //设置并发
+        container.setMaxConcurrentConsumers(2);  //最大并发
         container.setAcknowledgeMode(AcknowledgeMode.MANUAL); // RabbitMQ默认是自动确认，这里改为手动确认消息
         //设置一个队列
-        container.setQueueNames("TestDirectQueue");
+        container.setQueueNames("TestDirectQueue", "topic.woman");
         //如果同时设置多个如下： 前提是队列都是必须已经创建存在的
         //  container.setQueueNames("TestDirectQueue","TestDirectQueue2","TestDirectQueue3");
 
